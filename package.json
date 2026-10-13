@@ -1,0 +1,17 @@
+{
+  "name": "news-detection",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Concept page and cleaned code sample for a media-monitoring tool. Headlines, outlets and the watch-list shown are invented.",
+  "scripts": {
+    "serve": "node tools/serve.mjs site 4360 /news-detection/",
+    "test": "node --test \"site-tests/*.test.mjs\"",
+    "test:py": "python -m pytest -q",
+    "screenshots": "node tools/screenshots.mjs",
+    "og": "node tools/make-og.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}

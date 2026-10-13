@@ -1,0 +1,187 @@
+{
+  "about": "Shared matcher cases. tests/test_matcher.py (Python) and site-tests/matcher.test.mjs (JavaScript) both run every case, so the package and the page demo agree. 'expect' lists [term label, matched text] pairs in reading order. Options default to case_sensitive=false, whole_word=true.",
+  "cases": [
+    {
+      "name": "lower-case keyword finds a capitalised word",
+      "watchlist": "mangrove",
+      "text": "Mangrove nurseries open along the creek",
+      "expect": [["mangrove", "Mangrove"]]
+    },
+    {
+      "name": "capitalised keyword finds lower-case text (the original bug)",
+      "watchlist": "Pemba Channel",
+      "text": "currents in the pemba channel were unusually warm",
+      "expect": [["Pemba Channel", "pemba channel"]]
+    },
+    {
+      "name": "capitalised keyword finds an all-capitals headline",
+      "watchlist": "Kilwa",
+      "text": "KILWA FISHERS AGREE NEW CLOSED SEASON",
+      "expect": [["Kilwa", "KILWA"]]
+    },
+    {
+      "name": "case-sensitive mode keeps the capitals",
+      "watchlist": "Kilwa",
+      "options": { "case_sensitive": true },
+      "text": "KILWA and kilwa do not count, Kilwa does",
+      "expect": [["Kilwa", "Kilwa"]]
+    },
+    {
+      "name": "short keyword is not found inside a longer English word",
+      "watchlist": "eel",
+      "text": "Steel prices rise as wheel makers feel the pinch",
+      "expect": []
+    },
+    {
+      "name": "the same short keyword is found when it stands alone",
+      "watchlist": "eel",
+      "text": "A moray eel, photographed at the reef edge",
+      "expect": [["eel", "eel"]]
+    },
+    {
+      "name": "substring mode shows the false positives",
+      "watchlist": "eel",
+      "options": { "whole_word": false },
+      "text": "Steel prices rise as wheel makers feel the pinch",
+      "expect": [["eel", "eel"], ["eel", "eel"], ["eel", "eel"]]
+    },
+    {
+      "name": "Swahili keyword is not found inside a longer Swahili word",
+      "watchlist": "kasa",
+      "text": "Mikasa ya barabarani yaongezeka mjini",
+      "expect": []
+    },
+    {
+      "name": "Swahili keyword found as a word",
+      "watchlist": "kasa",
+      "text": "Kasa wa kijani warejea ufukweni baada ya miaka kumi",
+      "expect": [["kasa", "Kasa"]]
+    },
+    {
+      "name": "punctuation counts as a word boundary",
+      "watchlist": "reef\nmikoko",
+      "text": "\"Reef,\" she said. (Mikoko!) reef-building corals; reef's edge",
+      "expect": [["reef", "Reef"], ["mikoko", "Mikoko"], ["reef", "reef"], ["reef", "reef"]]
+    },
+    {
+      "name": "keyword at the very start and very end of the text",
+      "watchlist": "reef",
+      "text": "reef to reef",
+      "expect": [["reef", "reef"], ["reef", "reef"]]
+    },
+    {
+      "name": "digits and underscores are word characters",
+      "watchlist": "reef",
+      "text": "reef2 reef_survey 2reef",
+      "expect": []
+    },
+    {
+      "name": "phrase matches across extra spaces and a line break",
+      "watchlist": "marine protected area",
+      "text": "A new Marine   Protected\nArea was gazetted",
+      "expect": [["marine protected area", "Marine   Protected\nArea"]]
+    },
+    {
+      "name": "phrase matches across a hyphen and a non-breaking space",
+      "watchlist": "coral bleaching",
+      "text": "Coral-bleaching alert; coral bleaching confirmed",
+      "expect": [["coral bleaching", "Coral-bleaching"], ["coral bleaching", "coral bleaching"]]
+    },
+    {
+      "name": "phrase does not match when the words are run together or interrupted",
+      "watchlist": "coral bleaching",
+      "text": "coralbleaching; coral, bleaching; coral and bleaching",
+      "expect": []
+    },
+    {
+      "name": "phrase edges respect word boundaries",
+      "watchlist": "sea turtle",
+      "text": "sea turtles nest here; a deepsea turtle; one sea turtle",
+      "expect": [["sea turtle", "sea turtle"]]
+    },
+    {
+      "name": "variants on one line report the same term",
+      "watchlist": "mangrove | mangroves | mikoko | mkoko",
+      "text": "Mikoko elfu tano yapandwa; mangroves return; mkoko mmoja",
+      "expect": [["mangrove", "Mikoko"], ["mangrove", "mangroves"], ["mangrove", "mkoko"]]
+    },
+    {
+      "name": "Swahili phrase",
+      "watchlist": "hifadhi ya bahari",
+      "text": "Serikali yatangaza Hifadhi ya Bahari mpya",
+      "expect": [["hifadhi ya bahari", "Hifadhi ya Bahari"]]
+    },
+    {
+      "name": "Swahili word with an apostrophe, typed straight, found curly",
+      "watchlist": "ng'ambo",
+      "text": "Wavuvi wa ng’ambo ya mto",
+      "expect": [["ng'ambo", "ng'ambo"]]
+    },
+    {
+      "name": "apostrophe word is not split into a false match",
+      "watchlist": "ambo",
+      "text": "Wavuvi wa ng'ambo ya mto",
+      "expect": []
+    },
+    {
+      "name": "accented name, composed keyword against decomposed text",
+      "watchlist": "São Lourenço",
+      "text": "the São Lourenço shoal",
+      "expect": [["São Lourenço", "São Lourenço"]]
+    },
+    {
+      "name": "accented letters are word characters, not boundaries",
+      "watchlist": "caf",
+      "text": "a café by the harbour",
+      "expect": []
+    },
+    {
+      "name": "case folding outside ASCII",
+      "watchlist": "école de plongée",
+      "text": "ÉCOLE DE PLONGÉE reopens",
+      "expect": [["école de plongée", "ÉCOLE DE PLONGÉE"]]
+    },
+    {
+      "name": "regular-expression characters in a keyword are literal",
+      "watchlist": "reef (north)\nc.r.a.b",
+      "text": "the reef (north) survey; crab; cxrxaxb",
+      "expect": [["reef (north)", "reef (north)"]]
+    },
+    {
+      "name": "overlapping terms are both reported, longest first",
+      "watchlist": "reef\ncoral reef",
+      "text": "The coral reef recovers",
+      "expect": [["coral reef", "coral reef"], ["reef", "reef"]]
+    },
+    {
+      "name": "comments, blank lines and duplicates are ignored",
+      "watchlist": "# coast\n\nreef\nReef\n   \n# end",
+      "text": "reef",
+      "expect": [["reef", "reef"]]
+    },
+    {
+      "name": "hashtag and handle keywords",
+      "watchlist": "#BahariYetu\n@reefdesk",
+      "text": "Join us #bahariyetu with @ReefDesk today",
+      "expect": [["#BahariYetu", "#bahariyetu"], ["@reefdesk", "@ReefDesk"]]
+    },
+    {
+      "name": "a word that is English in one language and grammar in the other still matches",
+      "watchlist": "tuna",
+      "text": "Tuna matumaini makubwa mwaka huu",
+      "expect": [["tuna", "Tuna"]]
+    },
+    {
+      "name": "empty watch-list finds nothing",
+      "watchlist": "",
+      "text": "coral reef",
+      "expect": []
+    },
+    {
+      "name": "empty text finds nothing",
+      "watchlist": "reef",
+      "text": "",
+      "expect": []
+    }
+  ]
+}

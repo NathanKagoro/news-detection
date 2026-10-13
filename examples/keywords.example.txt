@@ -1,0 +1,36 @@
+# Example watch-list for an invented brief: a fictional conservation charity
+# following East African news coverage of reefs, mangroves and coastal fishing.
+#
+# One term per line. Use | to tie spellings of the same term together, which is
+# how an English and a Swahili form are counted as one. The first spelling is
+# the label that appears in the digest. Lines starting with "# " (hash, then a
+# space) are comments; a hashtag such as #BahariYetu is a term.
+#
+# Matching ignores case and respects word boundaries, so "eel" will not be
+# found inside "steel", and "Kilwa" will be found in "KILWA".
+
+# Habitats
+coral reef | coral reefs | matumbawe
+coral bleaching
+mangrove | mangroves | mikoko | mkoko
+seagrass | nyasi bahari
+
+# Protection
+marine protected area | marine park | hifadhi ya bahari
+octopus closure | closed season
+beach management unit | BMU
+
+# Species
+sea turtle | sea turtles | kasa
+dugong | nguva
+whale shark | papa potwe
+eel
+
+# Fishing
+small-scale fishers | wavuvi wadogo
+seaweed farming | kilimo cha mwani
+
+# Places
+Pemba Channel
+Kilwa
+Rufiji Delta

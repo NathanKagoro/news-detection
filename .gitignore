@@ -31,3 +31,6 @@ shots/
 Thumbs.db
 .vscode/
 .idea/
+
+# Crash dumps
+*.stackdump

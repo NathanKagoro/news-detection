@@ -1,0 +1,12 @@
+# Example sources file for a live run. Format, one source per line:
+#
+#   name, front page address, article path fragment (optional)
+#
+# The addresses below use example.org, a domain reserved for documentation, so
+# a live run with this file fetches nothing useful. Replace them with outlets
+# you have checked you are allowed to read automatically: look at each site's
+# robots.txt and terms first. The fetcher honours robots.txt and waits between
+# requests, but permission is your responsibility.
+
+The Coastal Courier, https://example.org/coastal-courier/, /news/
+Gazeti la Mwambao, https://example.org/gazeti-la-mwambao/, /habari/
