@@ -40,6 +40,23 @@ try {
         const strings = await page.evaluate(() => document.querySelectorAll('#strings path.string').length);
         const clips = await page.evaluate(() => document.querySelectorAll('#clippings .clip').length);
         if (clips !== 12 || strings === 0) errors.push(`demo did not run (${clips} clippings, ${strings} strings)`);
+        if (width === 1440) {
+          // Switching each rule off must bring back the fault it exists to prevent.
+          const tally = () => page.$eval('#tally', (n) => n.textContent);
+          const start = await tally();
+          await page.click('#rule-word');
+          const substring = await tally();
+          await page.click('#rule-word');
+          await page.click('#rule-case');
+          const caseSensitive = await tally();
+          await page.click('#rule-case');
+          const expected = [
+            [start, '9 of 12 clippings flagged. No stories missed. 1 false alarm.'],
+            [substring, '11 of 12 clippings flagged. No stories missed. 3 false alarms.'],
+            [caseSensitive, '3 of 12 clippings flagged. 5 stories missed. No false alarms.'],
+          ];
+          for (const [got, want] of expected) if (got !== want) errors.push(`tally was "${got}", expected "${want}"`);
+        }
       }
       const name = `shots/${file.replace('.html', '')}-${width}`;
       await page.screenshot({ path: `${name}-fold.png` });
