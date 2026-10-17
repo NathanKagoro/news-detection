@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News Detection: a watch-list in, a morning digest out</title>
+  <meta name="description" content="Concept page for a media-monitoring tool that reads East African news sites in English and Swahili and flags the headlines that mention a watch-list. Includes a live matching demo with invented headlines.">
+  <meta name="theme-color" content="#e8e3d3">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://nathankagoro.github.io/news-detection/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="News Detection: a watch-list in, a morning digest out">
+  <meta property="og:description" content="A media-monitoring concept for English and Swahili news, with a matching demo you can break and fix yourself.">
+  <meta property="og:url" content="https://nathankagoro.github.io/news-detection/">
+  <meta property="og:image" content="https://nathankagoro.github.io/news-detection/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A newspaper front page titled News Detection, with a headline partly marked in yellow highlighter and a red string pinned across it.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="News Detection: a watch-list in, a morning digest out">
+  <meta name="twitter:description" content="A media-monitoring concept for English and Swahili news, with a matching demo you can break and fix yourself.">
+  <meta name="twitter:image" content="https://nathankagoro.github.io/news-detection/og.jpg">
+  <link rel="preload" href="fonts/caslon-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/cutive-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#front-page">Skip to the front page</a>
+
+  <div class="wire-bar" role="region" aria-label="Wire ticker of invented outlet names">
+    <span class="wire-bar__slug" aria-hidden="true">Wire</span>
+    <div class="ticker" id="ticker">
+      <ul class="ticker__track">
+        <li>The Coastal Courier</li>
+        <li>Gazeti la Mwambao</li>
+        <li>Bahari Wire</li>
+        <li>Radio Kusi</li>
+        <li>The Monsoon Standard</li>
+        <li>Habari za Kaskazi</li>
+        <li>The Dhow Dispatch</li>
+        <li>Sauti ya Mwambao</li>
+        <li>The Lighthouse Post</li>
+        <li>Jahazi Forum</li>
+      </ul>
+    </div>
+    <button class="wire-bar__pause" id="ticker-toggle" type="button" aria-pressed="false">Pause</button>
+  </div>
+
+  <header class="masthead">
+    <div class="masthead__ears">
+      <a class="back" href="https://nathankagoro.com">&larr; nathankagoro.com</a>
+      <p class="masthead__notice">Concept edition. Every outlet, headline and watch-list term on this page is invented.</p>
+    </div>
+    <h1 class="masthead__name">News Detection</h1>
+    <p class="masthead__line">
+      <span>Dar es Salaam</span>
+      <span>A project by Nathan Kagoro</span>
+      <span>English and Kiswahili</span>
+    </p>
+  </header>
+
+  <main id="front-page">
+    <section class="lead" aria-labelledby="lead-head">
+      <div class="lead__story">
+        <h2 class="lead__head" id="lead-head">Sixteen outlets, a dozen feeds, two languages, and one small team to read them all before nine</h2>
+        <p class="lead__standfirst">News Detection was a tool that did the reading. A watch-list of names and phrases went in. A digest of the headlines that mentioned them came out.</p>
+        <div class="lead__columns">
+          <p><span class="dateline">The problem.</span> A small team needed to know, every morning, whether anyone in the regional press had written about the subjects it cared about. That meant national dailies, broadcasters, the Swahili services of international stations, a busy forum and a list of social accounts. Nobody has the hours to open them all, and the day somebody skips is the day the story runs.</p>
+          <p><span class="dateline">The idea.</span> Let a script make the rounds. It visits each source, collects the newest items, pulls out the title, the author and a summary, and checks the text against the watch-list. Anything that matches goes into one file. The team reads a short list, not the whole newsstand.</p>
+          <p><span class="dateline">This page.</span> The original was written for a private brief, so its real watch-list and results are not shown. To explain the work, the page uses a made-up brief: a conservation charity following coverage of reefs, mangroves and coastal fishing.</p>
+        </div>
+        <p class="lead__jump"><a class="button" href="#board">Try the matching demo</a> <a class="button button--quiet" href="#route">See how it works</a></p>
+      </div>
+
+      <aside class="teletype" aria-label="Sample wire printout, invented">
+        <div class="teletype__paper">
+          <p class="tt tt--head">ZCZC &nbsp;MORNING WIRE &nbsp;0600 EAT</p>
+          <p class="tt tt--rule" aria-hidden="true">- - - - - - - - - - - - - - - - - - - - - -</p>
+          <p class="tt tt--src">THE COASTAL COURIER</p>
+          <p class="tt">KILWA FISHERS VOTE TO EXTEND <mark>OCTOPUS CLOSURE</mark></p>
+          <p class="tt tt--src">GAZETI LA MWAMBAO</p>
+          <p class="tt"><mark>MIKOKO</mark> ELFU KUMI YAPANDWA DELTA YA RUFIJI</p>
+          <p class="tt tt--src">BAHARI WIRE</p>
+          <p class="tt"><mark>CORAL BLEACHING</mark> ALERT FOR THE <mark>PEMBA CHANNEL</mark></p>
+          <p class="tt tt--src">RADIO KUSI</p>
+          <p class="tt"><mark>KASA</mark> WA KIJANI WAREJEA UFUKWENI</p>
+          <p class="tt tt--rule" aria-hidden="true">- - - - - - - - - - - - - - - - - - - - - -</p>
+          <p class="tt tt--head">4 ITEMS FLAGGED &nbsp;NNNN</p>
+        </div>
+        <p class="teletype__caption">What the team would see at six: a wire of flagged headlines. This one is a mock-up.</p>
+      </aside>
+    </section>
+
+    <section class="section route" id="route" aria-labelledby="route-head">
+      <header class="section__head">
+        <h2 id="route-head">The route a story takes</h2>
+        <p>Five steps, run in order, once per source. Nothing clever happens until step four.</p>
+      </header>
+
+      <ol class="pipeline">
+        <li class="stage">
+          <svg class="stage__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 10h32v28H8z"/><path d="M13 16h22M13 22h12M13 27h12M13 32h12M29 22h6v10h-6z"/></svg>
+          <h3>Sources</h3>
+          <p>A plain text list of outlets and accounts. Adding one is a new line, not new code.</p>
+        </li>
+        <li class="stage">
+          <svg class="stage__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6v26M14 23l10 10 10-10M8 40h32"/></svg>
+          <h3>Fetch</h3>
+          <p>Open each front page, find the links that look like articles, and download the newest few.</p>
+        </li>
+        <li class="stage">
+          <svg class="stage__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 8h20l8 8v24H10z"/><path d="M30 8v8h8M16 22h16M16 28h16M16 34h9"/></svg>
+          <h3>Extract</h3>
+          <p>From each page keep four things: title, author, summary, and the visible text.</p>
+        </li>
+        <li class="stage stage--key">
+          <svg class="stage__icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="12"/><path d="M30 30l11 11M15 21h12"/></svg>
+          <h3>Match</h3>
+          <p>Compare the text with every term on the watch-list. This is the step that decides whether the tool is useful.</p>
+        </li>
+        <li class="stage">
+          <svg class="stage__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 8h32v32H8z"/><path d="M8 18h32M8 29h32M19 8v32"/></svg>
+          <h3>Digest</h3>
+          <p>Write the matches to a spreadsheet file, one row per story, with the terms that were found.</p>
+        </li>
+      </ol>
+
+      <figure class="trace">
+        <figcaption>One invented story, followed through the five steps</figcaption>
+        <dl class="trace__rows">
+          <div><dt>Source</dt><dd>The Coastal Courier, front page</dd></div>
+          <div><dt>Fetch</dt><dd>/news/kilwa-octopus-closure</dd></div>
+          <div><dt>Extract</dt><dd>Title: Kilwa fishers vote to extend octopus closure. Author: Amina Mbwana. Summary: Three villages will keep their reef flats shut for a further three months.</dd></div>
+          <div><dt>Match</dt><dd><mark>Kilwa</mark>, <mark>octopus closure</mark>, <mark>small-scale fishers</mark></dd></div>
+          <div><dt>Digest</dt><dd>The Coastal Courier, "Kilwa fishers vote to extend octopus closure", Amina Mbwana, Kilwa; octopus closure; small-scale fishers</dd></div>
+        </dl>
+      </figure>
+    </section>
+
+    <section class="board-section" id="board" aria-labelledby="board-head">
+      <header class="section__head section__head--board">
+        <h2 id="board-head">The evidence board</h2>
+        <p>This is the matching step, running in your browser. Edit the watch-list or switch the two rules off and watch which clippings get pinned. <strong>It is a demonstration: the twelve headlines and their outlets are invented.</strong></p>
+      </header>
+
+      <div class="board" id="board-area">
+        <svg class="board__strings" id="strings" aria-hidden="true" focusable="false"></svg>
+
+        <div class="board__desk">
+          <div class="card" id="watch-card">
+            <label class="card__title" for="watchlist">Watch-list</label>
+            <p class="card__hint" id="watch-hint">One term per line. Put a bar between spellings of the same term, such as <kbd>mangrove | mikoko</kbd>.</p>
+            <textarea id="watchlist" class="card__input" rows="10" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="watch-hint"></textarea>
+
+            <fieldset class="rules">
+              <legend>Matching rules</legend>
+              <label class="rule"><input type="checkbox" id="rule-case" checked> <span><b>Ignore capitals</b> Kilwa, kilwa and KILWA are one word.</span></label>
+              <label class="rule"><input type="checkbox" id="rule-word" checked> <span><b>Whole words only</b> eel is not found inside steel.</span></label>
+            </fieldset>
+            <button class="button button--card" type="button" id="reset">Restore the sample list</button>
+          </div>
+
+          <p class="tally" id="tally" role="status" aria-live="polite">Loading the clippings.</p>
+
+          <div class="tags" id="tags" role="group" aria-label="Terms on the watch-list. Choose one to follow its string."></div>
+        </div>
+
+        <ol class="clippings" id="clippings" aria-label="Sample clippings"></ol>
+        <noscript><p class="board__noscript">The demo needs JavaScript. The rest of the page does not.</p></noscript>
+      </div>
+
+      <div class="digest">
+        <div class="digest__paper">
+          <h3 class="digest__title">The digest this watch-list would produce</h3>
+          <pre class="digest__body" id="digest" aria-live="off">Waiting for the board.</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section two-up" aria-label="Sources and privacy">
+      <div class="desk" aria-labelledby="desk-head">
+        <header class="section__head">
+          <h2 id="desk-head">Where it was pointed</h2>
+          <p>Five kinds of source, each with its own habits.</p>
+        </header>
+        <ul class="beats">
+          <li><h3>National dailies</h3><p>English and Swahili newspapers. Plenty of text and usable page metadata, but every one lays out its site differently.</p></li>
+          <li><h3>Broadcasters</h3><p>Television and radio stations. Their sites carry short write-ups of bulletins, often with no author named.</p></li>
+          <li><h3>Swahili international services</h3><p>The Kiswahili desks of overseas broadcasters. Clean markup, regional coverage, and a different vocabulary from the dailies.</p></li>
+          <li><h3>Forums</h3><p>Long discussion threads where a story often surfaces before the papers have it. Noisy, informal, and written in a mix of both languages.</p></li>
+          <li><h3>Social accounts</h3><p>A list of named accounts and communities. The hardest to read automatically, for reasons given below.</p></li>
+        </ul>
+      </div>
+
+      <aside class="withheld" aria-labelledby="withheld-head">
+        <h2 id="withheld-head">The client's watch-list</h2>
+        <div class="withheld__sheet" role="img" aria-label="A typed list with every line blacked out.">
+          <span class="bar" style="--w:62%"></span>
+          <span class="bar" style="--w:88%"></span>
+          <span class="bar" style="--w:41%"></span>
+          <span class="bar" style="--w:74%"></span>
+          <span class="bar" style="--w:55%"></span>
+          <span class="bar" style="--w:93%"></span>
+          <span class="bar" style="--w:36%"></span>
+          <span class="bar" style="--w:68%"></span>
+        </div>
+        <p>Withheld. The real list belonged to a client and it is not on this page, in its source code, or in the repository. The bars are drawn shapes with nothing underneath.</p>
+      </aside>
+    </section>
+
+    <section class="section lessons" aria-labelledby="lessons-head">
+      <header class="section__head">
+        <h2 id="lessons-head">Corrections and clarifications</h2>
+        <p>What the first version got wrong, and what each mistake taught.</p>
+      </header>
+
+      <div class="lessons__grid">
+        <article class="lesson">
+          <h3>Every site is built differently</h3>
+          <p>The first version had a separate scraper for each outlet, sixteen near copies that each looked for that site's own class names. When a site was redesigned its scraper returned nothing, and said nothing. The cleaned version uses one extractor that reads the preview metadata nearly every news page publishes, and falls back to the first heading and paragraph.</p>
+        </article>
+        <article class="lesson">
+          <h3>Social platforms closed their doors</h3>
+          <p>The social half relied on an unofficial library that read public posts without an account. That route has since been closed. Anything built on an unofficial door stops the day the door is locked, so social sources need an official interface or a licensed feed, and a budget line to go with it.</p>
+        </article>
+        <article class="lesson">
+          <h3>A capital letter hid whole names</h3>
+          <p>The scrapers turned the page text into lower case, then looked for each term exactly as it was typed. A term with a capital letter, which is to say most names of people and places, could never be found.</p>
+          <p class="proof"><span class="proof__was">looked for <b>Kilwa</b> in <b>kilwa fishers vote&hellip;</b></span><span class="proof__now">now: <mark>Kilwa</mark>, <mark>KILWA</mark> and <mark>kilwa</mark> all count</span></p>
+        </article>
+        <article class="lesson">
+          <h3>Short words hide inside long ones</h3>
+          <p>The test was "does this text contain these letters", so a short term fired inside any longer word that happened to contain it. In Swahili the same trap catches <i lang="sw">kasa</i>, turtle, inside <i lang="sw">mikasa</i>, incidents.</p>
+          <p class="proof"><span class="proof__was">found <b>eel</b> in <b>st<u>eel</u> prices rise</b></span><span class="proof__now">now: only <mark>eel</mark> as a word of its own</span></p>
+        </article>
+        <article class="lesson">
+          <h3>One subject, two spellings</h3>
+          <p>A reader knows that mangrove and <i lang="sw">mikoko</i> are the same story. The first watch-list did not, so half the coverage of any subject depended on someone remembering to type both. A line in the list can now hold every spelling of one term, and the digest reports them under one name.</p>
+        </article>
+        <article class="lesson">
+          <h3>Some mistakes need a reader</h3>
+          <p><i lang="sw">Tuna</i> is a fish in English and "we have" in Swahili. No rule about letters can tell them apart, which is why the board above keeps one false alarm however you set it. A digest is a first sift for a person, not a replacement for one.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section notices" aria-labelledby="notices-head">
+      <header class="section__head">
+        <h2 id="notices-head">Wanted, for a production run</h2>
+        <p>What this would need before anyone relied on it.</p>
+      </header>
+      <ul class="notices__list">
+        <li><h3>Feeds before pages</h3><p>Read each outlet's news feed or sitemap where one exists. Scrape pages only as a last resort, and only where the site's rules allow it.</p></li>
+        <li><h3>A memory</h3><p>A record of what has already been reported, so the same story is not flagged every morning for a week.</p></li>
+        <li><h3>A pulse check</h3><p>An alert when a source that normally yields stories returns none. Silence from a broken scraper looks exactly like a quiet news day.</p></li>
+        <li><h3>A timetable</h3><p>A scheduled run that finishes before the team starts work, with the digest sent by email and not left in a folder.</p></li>
+        <li><h3>Permission</h3><p>Official access for social sources, and a check of each site's robots file and terms before it joins the list.</p></li>
+        <li><h3>A second opinion</h3><p>A way for a reader to mark a match as wrong, so the watch-list improves, and context around each match so they can judge it at a glance.</p></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <div class="colophon__inner">
+      <p class="colophon__name">News Detection</p>
+      <p>A concept page for a private project. The outlets, people, headlines and watch-list shown are invented, and no figures from real runs appear. The matching demo runs the same rules as the Python package in the repository; both are tested against one shared set of cases.</p>
+      <p class="colophon__links">
+        <a class="button button--quiet" href="https://github.com/NathanKagoro/news-detection">Read the code on GitHub</a>
+        <a class="button button--quiet" href="https://nathankagoro.com">&larr; nathankagoro.com</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
