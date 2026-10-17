@@ -1,0 +1,7 @@
+The fonts in this folder are latin subsets taken from the Fontsource packages
+and are licensed under the SIL Open Font License, Version 1.1
+(https://openfontlicense.org).
+
+caslon-condensed-*.woff2  Libre Caslon Condensed, Copyright 2020 The Libre Caslon Condensed Project Authors
+cutive-mono-400.woff2     Cutive Mono, Copyright 2012 The Cutive Project Authors
+unifraktur-700.woff2      UnifrakturCook, Copyright (c) 2010 j. 'mach' wust, (c) 2009 Peter Wiegel. Reserved Font Name UnifrakturCook.
